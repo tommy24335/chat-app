@@ -3,6 +3,8 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @room = Room.find(params[:room_id])
+    # チャットルームに紐付いている全てのメッセージ（@room.messages）を@messagesと定義
+    @messages = @room.messages.includes(:user)
   end
 
   # messagesコントローラーにcreateアクションを定義します。
@@ -13,6 +15,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to room_messages_path(@room)
     else
+      @messages = @room.messages.includes(:user)
       render :index
     end
   end
