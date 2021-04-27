@@ -19,6 +19,13 @@ class RoomsController < ApplicationController
     end
   end
 
+  # インスタンス変数ではなく変数としてroomを定義し、destroyメソッドを使用します
+  def destroy
+    room = Room.find(params[:id])
+    room.destroy
+    redirect_to root_path
+  end
+
   private
 
   def room_params
