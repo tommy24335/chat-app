@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
+# nameカラムが空の状態ではDBに保存できない」というバリデーション
 validates :name, presence: true
 
   has_many :room_users
