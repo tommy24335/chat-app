@@ -13,6 +13,7 @@
 
 <div class="messages">
    <%= render partial: 'message', collection: @messages %>
+</div>
 
 <!--メッセージを保存できるように、ビューを編集-->
 <%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
